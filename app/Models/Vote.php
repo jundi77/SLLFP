@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Traits\UsesUUID;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Vote extends Model
 {
-    // use UsesUUID;
+    use UsesUUID;
     
     protected $fillable = [
         'respondent_id', 'choice_id'

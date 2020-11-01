@@ -12,57 +12,57 @@ class PermissionTestController extends Controller
 
     public function index()
     {   
-    	$dev_permission = Permission::where('slug','create-tasks')->first();
-		$manager_permission = Permission::where('slug', 'edit-users')->first();
+    	$adm_permission = Permission::where('slug','create-tasks')->first();
+		$normal_permission = Permission::where('slug', 'edit-users')->first();
 
 		//RoleTableSeeder.php
-		$dev_role = new Role();
-		$dev_role->slug = 'developer';
-		$dev_role->name = 'Front-end Developer';
-		$dev_role->save();
-		$dev_role->permissions()->attach($dev_permission);
+		$adm_role = new Role();
+		$adm_role->slug = 'admin';
+		$adm_role->name = 'Admin';
+		$adm_role->save();
+		$adm_role->permissions()->attach($adm_permission);
 
-		$manager_role = new Role();
-		$manager_role->slug = 'manager';
-		$manager_role->name = 'Assistant Manager';
-		$manager_role->save();
-		$manager_role->permissions()->attach($manager_permission);
+		$normal_role = new Role();
+		$normal_role->slug = 'normal';
+		$normal_role->name = 'User Biasa';
+		$normal_role->save();
+		$normal_role->permissions()->attach($normal_permission);
 
-		$dev_role = Role::where('slug','developer')->first();
-		$manager_role = Role::where('slug', 'manager')->first();
+		$adm_role = Role::where('slug','admin')->first();
+		$normal_role = Role::where('slug', 'normal')->first();
 
 		$createTasks = new Permission();
 		$createTasks->slug = 'create-tasks';
 		$createTasks->name = 'Create Tasks';
 		$createTasks->save();
-		$createTasks->roles()->attach($dev_role);
+		$createTasks->roles()->attach($adm_role);
 
 		$editUsers = new Permission();
 		$editUsers->slug = 'edit-users';
 		$editUsers->name = 'Edit Users';
 		$editUsers->save();
-		$editUsers->roles()->attach($manager_role);
+		$editUsers->roles()->attach($normal_role);
 
-		$dev_role = Role::where('slug','developer')->first();
-		$manager_role = Role::where('slug', 'manager')->first();
-		$dev_perm = Permission::where('slug','create-tasks')->first();
-		$manager_perm = Permission::where('slug','edit-users')->first();
+		$adm_role = Role::where('slug','developer')->first();
+		$normal_role = Role::where('slug', 'manager')->first();
+		$adm_perm = Permission::where('slug','poll')->first();
+		$normal_perm = Permission::where('slug','poll')->first();
 
-		$developer = new User();
-		$developer->name = 'Harsukh Makwana';
-		$developer->email = 'harsukh21@gmail.com';
-		$developer->password = bcrypt('harsukh21');
-		$developer->save();
-		$developer->roles()->attach($dev_role);
-		$developer->permissions()->attach($dev_perm);
+		$admin = new User();
+		$admin->name = 'Harsukh Makwana';
+		$admin->email = 'harsukh21@gmail.com';
+		$admin->password = bcrypt('harsukh21');
+		$admin->save();
+		$admin->roles()->attach($adm_role);
+		$admin->permissions()->attach($adm_perm);
 
-		$manager = new User();
-		$manager->name = 'Jitesh Meniya';
-		$manager->email = 'jitesh21@gmail.com';
-		$manager->password = bcrypt('jitesh21');
-		$manager->save();
-		$manager->roles()->attach($manager_role);
-		$manager->permissions()->attach($manager_perm);
+		$normal = new User();
+		$normal->name = 'Jitesh Meniya';
+		$normal->email = 'jitesh21@gmail.com';
+		$normal->password = bcrypt('jitesh21');
+		$normal->save();
+		$normal->roles()->attach($normal_role);
+		$normal->permissions()->attach($normal_perm);
 
 		
 		return redirect('home');

@@ -14,13 +14,14 @@ class CreateVotesTable extends Migration
     public function up()
     {
         Schema::create('votes', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+
             $table->uuid('respondent_id');
             $table->uuid('choice_id');
             
             $table->foreign('respondent_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('choice_id')->references('id')->on('choices')->onDelete('cascade');
             
-            $table->primary(['respondent_id', 'choice_id']);
             $table->timestamps();
         });
     }

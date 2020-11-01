@@ -5,10 +5,11 @@
 		<div
 			style="width:100%"
 			 v-for="poll in polls"
-			 :key="id in poll"
+			 :key="poll.id"
 		>
-		<a :href="'/poll/' + poll.id" class="btn btn-light mb-3" style="width:100%">
-			{{ poll.title }}
+		<a :href="'/polls/' + poll.id" class="btn btn-light mb-3" style="width:100%">
+			{{ poll.title }} <br />
+			<small>Oleh {{ poll.users[0].name }}</small>
 		</a>
 		</div>
             </div>
@@ -17,22 +18,15 @@
 
 <script>
     export default {
+	props: ['polls'],
 	data: function() {
 		return {
-			polls: [{
-				id: 1,
-				title: 'p'
-			}]
 		}
 	},
-        mounted() {
-	    console.log('Component mounted.')
-	    this.test()
+    	mounted() {
+	    	console.log(this.polls)
 	},
 	methods: {
-		test: function() {
-			console.log('a')
-		}
 	}
     }
 </script>

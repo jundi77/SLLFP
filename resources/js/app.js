@@ -4,12 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-const { default: Vuetify } = require('vuetify/lib');
+// const { default: Vuetify } = require('vuetify/lib');
 
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.Vuetify = require('vuetify')
+// window.Vuetify = require('vuetify')
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,10 +22,11 @@ window.Vuetify = require('vuetify')
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.use(Vuetify)
-Vue.component('poll-list', require('./components/PollListComponent.vue').default);
+// Vue.use(Vuetify)
+Vue.component('poll-list',require('./components/PollListComponent.vue').default);
 Vue.component('poll-choice', require('./components/PollChoiceComponent.vue').default);
-Vue.component('vote-history', require('./components/VoteHistoryComponent.vue').default);
+// Vue.component('vote-history', require('./components/VoteHistoryComponent.vue').default);
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,9 +34,9 @@ Vue.component('vote-history', require('./components/VoteHistoryComponent.vue').d
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// midtrans
+const midtransClient = require('midtrans-client');
 
-
-const app = new Vue({
-    el: '#app',
-    components: ['poll-list', 'poll-choice', 'vote-history']
+window.app = new Vue({
+    el: '#poll-app',
 });

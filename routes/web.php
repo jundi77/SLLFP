@@ -22,16 +22,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['middleware' => ['role:developer', 'permission:create-tasks']], function() {
-
-    Route::get('/admin', function() {
-        Log::info(auth()->user()->email);
-       return 'Welcome Admin';
-       
-    });
- 
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('/polls', 'PollController@getAll');
+    Route::post('/polls', 'PollController@make');
+    Route::get('/polls/{id}', 'PollController@showPoll');
+    Route::post('/polls/{id}', 'PollController@vote');
+    Route::put('/polls/{id}', 'PollController@closeSwitch');
+    Route::get('/buy/{id}', 'PaymentController@buyVote'); 
 });
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 Route::get('/make-permission', 'PermissionTestController@index')->name('make-permission-test');
 Route::get('/make-poll', 'PollingTestController@seeds');
 Route::get('/test-poll', 'PollingTestController@show');

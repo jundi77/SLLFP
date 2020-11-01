@@ -2,10 +2,13 @@
 
 1. Voting online yang bisa bayar pakai vote. 
 1. Bisa komentar.
-1. Register, login, Buat votingan, Lihat votingan, Ikut votingan, Bayar votingan, Detail yang vote, Dashboard user.
-1. Role:
-    - User biasa: bisa lihat log dia sendirinp.
-    - Admin: bisa lihat log manapun.
+1. Register, login, Buat votingan, Lihat votingan, Ikut votingan, Bayar votingan, Detail yang vote.
+1. Role (perbedaan di perizinan closing poll):
+    - User biasa.
+    - Admin.
+
+DEMO: [video](https://youtu.be/5io-4nwknSI)
+N.B. Ada juga fitur lihat log! Saya lupa menyertakannya di video.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
